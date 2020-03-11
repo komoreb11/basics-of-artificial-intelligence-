@@ -8,7 +8,7 @@ pg.init()
 screen = pg.display.set_mode((1900, 1070))
 clock = pg.time.Clock()
 screen.fill((255, 255, 255))
-fps = 144
+fps = 60
 tile_size = 14
 
 current_path = os.path.dirname(__file__)
