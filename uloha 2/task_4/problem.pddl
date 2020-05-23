@@ -1,0 +1,101 @@
+(define (problem to_be_happy)
+    (:domain world)
+    (:requirements :strips :typing  :negative-preconditions)
+    (:objects sailor - hero
+              port river forest island sea bar city academy beacon - place
+              wood coconuts pearl boat bearskin frigate caravel goldgrain goldcoin goldignot alko cocaine map flowers ring - item )
+    (:init
+        (path port river)   (path river port)
+        (path port city)   (path city port)
+        (path city academy)   (path academy city)
+        (path port bar)   (path bar port)
+        (path river forest) (path forest river)
+        (waterpath port sea)   (waterpath sea port)
+        (waterpath port beacon)   (waterpath beacon port)
+        (waterpath sea beacon)  (waterpath beacon sea)
+        (waterpath sea island)  (waterpath island sea)
+
+        (at port sailor)
+        (at forest wood)
+        (at forest flowers)
+        (at island coconuts)
+        (at island wood)
+        (at sea pearl)
+        (seaplace sea)
+    
+
+        (not(own wood))
+        (not(own boat))
+        (not(own caravel))
+        (not(own map))
+
+        (isgg goldgrain)
+        (isgc goldcoin)
+        (isgi goldignot)
+
+        (craftable boat wood)
+        (craftable_med ring goldignot pearl)
+        (craftable_big frigate goldgrain wood boat)
+        (craftable_big caravel goldcoin wood boat)
+
+        (canswim boat)
+        (canswim frigate)
+        (canswim caravel)
+
+
+        (buy alko bar)
+        (sell bearskin port)
+        (sell coconuts port)
+
+        (stealable goldcoin city)
+        (canwork port)
+        (canwork river)
+        (bath river)
+        (bath sea)
+        (police city)
+
+
+        (isalko alko)
+        (ismap map)
+        (iscocaine cocaine)
+        (isskin bearskin)
+        (isfrigate frigate)
+        (iscaravel caravel)
+        (isboat boat)
+        (isflowers flowers)
+        (isring ring)
+        (grandpa forest)
+        (bearplace forest)
+        (beerplace bar)
+        (pirateplace sea)
+        (pirateproblem sea)
+        (bank city)
+        (academyplace academy)
+        (treasureplace island)
+        (girlhome beacon)
+        (smugglerplace port)
+        (weddingplace island)
+        
+        (not(alittledrunk))
+        (not (drunk))
+        (not(alkodep))
+        (not(goodcontacts))
+        (not(badcontacts))
+        (not(criminalrecord))
+        (not(weddingready))
+        (not(Strong))
+        (not(Smuggler))
+
+        (not(LOVE))
+        (not(MONEY))
+        (not(ROCKNROLL))
+
+    )   
+    (:goal 
+        (and
+          (LOVE)
+          (MONEY)
+          (ROCKNROLL)
+        )
+    )
+)
