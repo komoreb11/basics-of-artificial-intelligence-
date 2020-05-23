@@ -3,9 +3,10 @@ import os
 import collections
 import random
 import sys
+from math import sqrt
 
 pg.init()
-screen = pg.display.set_mode((1900, 1070))
+screen = pg.display.set_mode((1920, 1040))
 clock = pg.time.Clock()
 screen.fill((255, 255, 255))
 fps = 60
@@ -58,8 +59,8 @@ class Block():
         self.cur_state(new_state)
 
     def set_greedy_dist(self, goal):
-        self.greedy_dist = ((goal.x_cordinate - self.x_cordinate) * (goal.x_cordinate - self.x_cordinate)) + (
-                    (goal.y_cordinate - self.y_cordinate) * (goal.y_cordinate - self.y_cordinate))
+        self.greedy_dist = sqrt(((goal.x_cordinate - self.x_cordinate) * (goal.x_cordinate - self.x_cordinate)) + (
+                    (goal.y_cordinate - self.y_cordinate) * (goal.y_cordinate - self.y_cordinate)))
 
 
 def load_map(lines, x_start, y_start, x_end, y_end):
@@ -241,18 +242,15 @@ def a_star(map, start, goal):
         if cur.x_cordinate == goal.x_cordinate and cur.y_cordinate == goal.y_cordinate:
             return goal
         for n in cur.neighbours:
-            distance = cur.dist + 1
-
-            if map[n[0]][n[1]] not in open.queue or distance < map[n[0]][n[1]].dist:
-                if map[n[0]][n[1]] not in open.queue and map[n[0]][n[1]] not in closed:
-                    map[n[0]][n[1]].set_greedy_dist(goal)
-                    map[n[0]][n[1]].dist = distance
-                    map[n[0]][n[1]].set_state("open")
-                    map[n[0]][n[1]].prev = (cur.x_cordinate, cur.y_cordinate)
-                    open.insert(map[n[0]][n[1]])
-                elif map[n[0]][n[1]] not in closed:
-                    map[n[0]][n[1]].dist = distance
-                    map[n[0]][n[1]].prev = (cur.x_cordinate, cur.y_cordinate)
+            if map[n[0]][n[1]] not in closed:
+                distance = cur.dist + 1
+                map[n[0]][n[1]].set_greedy_dist(goal)
+                if map[n[0]][n[1]] not in open.queue or distance < map[n[0]][n[1]].dist:
+                        map[n[0]][n[1]].prev = (cur.x_cordinate, cur.y_cordinate)
+                        map[n[0]][n[1]].dist = distance
+                        if map[n[0]][n[1]] not in open.queue:
+                            map[n[0]][n[1]].set_state("open")
+                            open.insert(map[n[0]][n[1]])
         cur.set_state("closed")
         closed.add(cur)
 
@@ -286,6 +284,7 @@ if __name__ == '__main__':
         while True:
             user_input = input()
             if user_input.strip() == "":  # empty line signals stop
+                
                 break
             input_lines.append(user_input)
             if user_input[0] == 'e':
