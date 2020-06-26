@@ -1,0 +1,14 @@
+Protokol k volitelnÃ© Ãºloze z BI-ZUM
+
+Yutukov Artem
+iutukart
+
+
+1. GenetickÃ½ algoritmus.( viz https://courses.fit.cvut.cz/BI-ZUM/labs/03/index.html)
+.
+2.  1) Turnajova selekce
+    2) DvoubodovÃ© kÅÃ­Å¾enÃ­
+    3) Deterministic crowding
+3. 
+
+
