@@ -1,4 +1,4 @@
-Protokol k volitelnÃ© Ãºloze z BI-ZUM
+Protokol k volitelne uloze z BI-ZUM
 
 Yutukov Artem
 iutukart
@@ -9,6 +9,12 @@ iutukart
 2.  1) Turnajova selekce
     2) Dvoubodové křížení
     3) Deterministic crowding
-3. 1) Podle mym t
+
+3.  1) Pouzil jsem dvoubodove krizeni, myslim si ze by to mohlo fungovat lib, mame hodne uzlu v grafu
+    2) Zkusil jsem Turnajovou a Ruletovou selekci, obe dali dobry vysledek.
+    3) Vyuzil jsem Deterministic crowding, protoze mame velky graf, a spostu variaci pokryty. Abychom zabranili tomu, aby se prılis dobry typ jedince premnozil obsadil celou populaci.
+
+4.  1) https://www.sciencedirect.com/science/article/pii/S0957417412002230
+    2) https://onlinelibrary.wiley.com/doi/full/10.1002/tee.22591
 
 
